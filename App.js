@@ -12,12 +12,10 @@ export default class App extends Component<Props> {
               <Stack key={'root'}>
                     <Scene key={"comicsList"}
                            component={comicsList}
-                           initial={false}
+                           initial={true}
                     />
                     <Scene key={"comicDetail"}
                            component={comicDetail}
-                           initial={true}
-
                     />
               </Stack>
           </Router>
