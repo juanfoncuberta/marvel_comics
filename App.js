@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import * as reducers from './src/data/redux'
 import thunk from 'redux-thunk'
 import * as api from './src/data/api_axios'
+import { Actions } from 'react-native-router-flux'
 
 const reducer = combineReducers(reducers)
 const store = createStore(
@@ -14,8 +15,10 @@ const store = createStore(
     applyMiddleware(thunk)
 )
 const RighButton = props => (
-    <TouchableOpacity style={{padding: 10}} onPress={() => Actions.comicForm() }>
-        <Text style={{color: 'white', fontWeight: 'bold'}}>{'Add'}</Text>
+    <TouchableOpacity
+        style={{padding: 10}}
+        onPress={() => Actions.comicForm() }>
+        <Text style={{color: 'black', fontWeight: 'bold'}}>{'Opinion'}</Text>
     </TouchableOpacity>
 )
 export default class App extends Component {
@@ -31,7 +34,7 @@ export default class App extends Component {
                   <Stack>
                       <Scene
                         key={'comicsList'}
-
+                        initial={true}
                         component={comicsList}
                       />
                       <Scene
@@ -40,7 +43,6 @@ export default class App extends Component {
                           renderRightButton={RighButton}
                       />
                       <Scene
-                          initial={true}
                           key={'comicForm'}
                           component={comicForm}
                       />

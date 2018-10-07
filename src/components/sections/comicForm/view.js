@@ -20,8 +20,6 @@ export default class extends Component{
 
     }
     render(){
-
-        console.log("rendering")
         return(
             <View style={styles.container}>
                 <View style={{paddingHorizontal:20, paddingBottom: 20}}>
