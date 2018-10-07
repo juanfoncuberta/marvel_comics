@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
-import { TouchableOpacity, Image } from 'react-native'
-import styles from './styles'
+import { StyleSheet, Dimensions } from 'react-native'
 
-export default  class comicsListCell extends  Component{
+const {height, width} = Dimensions.get('window')
+export default StyleSheet.create({
+    cellContainer: {
+        width: width / 2,
+        borderWidth: 1,
+        height: height / 2 - 10,
+        backgroundColor: 'rgb(24,24,24)',
+        alignItems: 'center',
+        paddingHorizontal: 4,
+        justifyContent: 'center',
+        paddingVertical: 2,
+        borderColor: 'grey',
 
-    static defaultProps = {
-        comic: null,
-        onComicPress: () => {}
     }
-
-    render(){
-        const { comic, onComicPress } from this.props
-
-        return(
-            <TouchableOpacity>
-                {'Hola'}
-            </TouchableOpacity>
-        )
-
-}
+})

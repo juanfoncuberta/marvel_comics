@@ -1,4 +1,4 @@
-import comicsList from './comicsList'
+import comicsList from './comicsList/'
 import comicDetail from './comicDetail'
 
 export {

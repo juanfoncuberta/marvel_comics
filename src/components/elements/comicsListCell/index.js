@@ -1,3 +1,3 @@
-import component from './view'
+import Component from './view'
 
-export default component
+export default Component
