@@ -7,8 +7,6 @@ const initialState = {
 }
 
 export default function reducer(state = initialState ,action ={}) {
-    console.log("ACTION", action.type)
-    console.log("VALUE" ,action.value)
     switch (action.type) {
         case  types.COMICSLIST_SET_FETCHING:
             return {

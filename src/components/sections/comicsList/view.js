@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { View, FlatList,Text } from 'react-native'
+import { View, FlatList,Text,TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import connect from "react-redux/es/connect/connect";
 import * as ComicsListActions from '../../../data/redux/comicsList/actions'
@@ -16,17 +16,22 @@ import styles from './styles'
     componentDidMount(){
       this.props.fetchComicsList()
     }
+     _onComicTapped(comic){
+         this.props.onComicTapped(comic)
+     }
+    _showItem({ item }){
+        const title = item ? item.title : null
 
-    _showItem(val){
-        const title = val ? val.item.title : null
 
-        console.log("comicList showitem:", title)
-
-        return <View style={{height: '100%', backgroundColor:'blue', paddingVertical: 20}} >
-            <Text style={{color:'white'}}>
-                {title}
-            </Text>
-            </View>
+        return <TouchableOpacity
+                    style={{height: '100%', backgroundColor:'blue', paddingVertical: 20}}
+                        onPress={()=> this._onComicTapped(item)}
+                        activeOpacity={ 0.4}
+                >
+                    <Text style={{color:'white'}}>
+                        {title}
+                    </Text>
+                </TouchableOpacity>
     }
     render(){
         return(
@@ -36,6 +41,7 @@ import styles from './styles'
                    data={this.props.list}
                     numColumns={2}
                     style={ {  paddingTop: 20}}
+                    keyExtractor={(item,id)=> "cell"+id}
                 />
             </View>
         )
@@ -56,6 +62,10 @@ const mapDispatchToProps = (dispatch,props) => {
         fetchComicsList: () => {
             dispatch(ComicsListActions.fetchComicsList())
 
+        },
+        onComicTapped: (comic) => {
+            dispatch(ComicsListActions.setItem(comic))
+            Actions.comicsDetail({title: comic.title})
         }
     }
 }

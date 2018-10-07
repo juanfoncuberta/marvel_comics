@@ -9,10 +9,7 @@ const BASE_URL = "https://gateway.marvel.com/v1/public"
 var HASH = null
 
 export function configureAxios(){
-    console.log("CONFIGURING")
 
-
-   // console.log(TIME_STAMP)
     axios.defaults.baseURL = BASE_URL
     axios.defaults.headers.post['Content-Type'] = CONTENT_TYPE
     axios.defaults.headers.common['Referer'] = REFERER
@@ -22,7 +19,6 @@ export function configureAxios(){
 export function fetchComicsList(){
     setHash()
     const url = `/comics?apikey=${MARVEL_PUBLIC_API_KEY}&hash=${HASH}&ts=${TIME_STAMP}`
-    console.log("URL:",url)
      return axios.get(url)
 }
 

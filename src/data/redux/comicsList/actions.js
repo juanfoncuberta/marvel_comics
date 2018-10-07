@@ -16,7 +16,7 @@ function setFeching(value){
     }
 }
 
-function setItem(value){
+export function setItem(value){
     return {
         type: types.COMICSLIST_SET_ITEM,
         value

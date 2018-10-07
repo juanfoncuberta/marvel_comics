@@ -4,29 +4,14 @@ import ComicsListActions from "../../../data/redux/comicsList/actions";
 import {Actions} from "react-native-router-flux";
 import connect from "react-redux/es/connect/connect";
 
-class comicDetail extends Component{
+export default class extends Component{
     render(){
+        const { comic } = this.props
+        const title = comic && comic.title ? comic.title : ''
         return(
-            <View style={{ flex: 1, backgroundColor: 'lime', alignItems: 'center',  justifyContent: 'center' }}>
-                <Text style={{color: 'white' }}>Comic x</Text>
+            <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center',  justifyContent: 'center' }}>
+                <Text style={{color: 'white' }}>{title}</Text>
             </View>
         )
     }
 }
-
-
-const mapStateProps = ( state ) => {
-    return {
-
-    }
-}
-
-const mapDispatchToProps = ( dispatch, props ) => {
-    return {
-        fetchComicsList:() => {
-
-        }
-    }
-}
-
-export default connect(mapStateProps,mapDispatchToProps)(comicDetail)
